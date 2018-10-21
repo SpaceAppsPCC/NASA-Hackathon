@@ -15,7 +15,8 @@
 		"lspname": "Russian Space Forces",
 		"latitude": "62.92883",
 		"longitude": "40.457098",
-		"mission": "Lotos-S1 spacecraft is a part of the Liana constellation, designed for orbital electronic intelligence."
+		"mission": "Lotos-S1 spacecraft is a part of the Liana constellation, designed for orbital electronic intelligence.", 
+		"weather":"90"
 	},
 	{
 		"launchid": "1059",
@@ -33,7 +34,8 @@
 		"lspname": "Northrop Grumman Innovation Systems",
 		"latitude": "28.455556",
 		"longitude": "-80.527778",
-		"mission": "Ionospheric Connection Explorer (ICON) is a NASA mission to study Earth s thermosphere and ionosphere and the connection between space weather and weather on our planet. Mission is planned to last for two years."
+		"mission": "Ionospheric Connection Explorer (ICON) is a NASA mission to study Earth s thermosphere and ionosphere and the connection between space weather and weather on our planet. Mission is planned to last for two years.", 
+		"weather":"105"
 	},
 	{
 		"launchid": "1633",
@@ -51,7 +53,8 @@
 		"lspname": "LandSpace",
 		"latitude": "40.958",
 		"longitude": "100.291",
-		"mission": "The satellite is operated by China Central Television (CCTV) and is intended to carry out scientific expermients and perform Earth observation. Weilai-1 is expected to operate in sun-synchronous orbit for two years."
+		"mission": "The satellite is operated by China Central Television (CCTV) and is intended to carry out scientific expermients and perform Earth observation. Weilai-1 is expected to operate in sun-synchronous orbit for two years.", 
+		"weather":"102"
 	},
 	{
 		"launchid": "1065",
@@ -69,7 +72,8 @@
 		"lspname": "Mitsubishi Heavy Industries",
 		"latitude": "30.401",
 		"longitude": "130.977",
-		"mission": "KhalifaSat is an Earth observation satellite for UAE. KhalifaSat will provide high-resolution imagery of Earth to be used for various purposes, including urban planning, change monitoring, area classification, monitoring environmental change and aiding relief efforts for natural disasters GOSAT 2 (Greenhouse gases Observing SATellite 2) is a Japanese satellite dedicated to greenhouse gas measurement from space. It s a follow on to the GOSAT mission and includes such improvements as an ability to gather more precise data and monitor carbon monoxide concentrations."
+		"mission": "KhalifaSat is an Earth observation satellite for UAE. KhalifaSat will provide high-resolution imagery of Earth to be used for various purposes, including urban planning, change monitoring, area classification, monitoring environmental change and aiding relief efforts for natural disasters GOSAT 2 (Greenhouse gases Observing SATellite 2) is a Japanese satellite dedicated to greenhouse gas measurement from space. It s a follow on to the GOSAT mission and includes such improvements as an ability to gather more precise data and monitor carbon monoxide concentrations.", 
+		"weather":"100"
 	},
 	{
 		"launchid": "1335",
@@ -87,7 +91,8 @@
 		"lspname": "China Aerospace Science and Technology Corporation",
 		"latitude": "40.958",
 		"longitude": "100.291",
-		"mission": "CFOSAT (China-France Oceanography SATellite) is a joint mission of the Chinese (CNSA) and French (CNES) space agencies with the goal to monitor the ocean surface winds and waves and to provide information on related ocean and atmospheric science and applications. The primary objective of CFOSAT is to monitor on a global scale the wind and waves at the ocean surface."
+		"mission": "CFOSAT (China-France Oceanography SATellite) is a joint mission of the Chinese (CNSA) and French (CNES) space agencies with the goal to monitor the ocean surface winds and waves and to provide information on related ocean and atmospheric science and applications. The primary objective of CFOSAT is to monitor on a global scale the wind and waves at the ocean surface.", 
+		"weather":"94"
 	},
 	{
 		"launchid": "1513",
@@ -105,6 +110,7 @@
 		"lspname": "Vector",
 		"latitude": "57.435833",
 		"longitude": "-152.337778",
-		"mission": "First orbital flight of a Vector-R rocket, which will carry two PocketQube satellites."
+		"mission": "First orbital flight of a Vector-R rocket, which will carry two PocketQube satellites.", 
+		"weather":"96"
 	}
 ]

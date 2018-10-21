@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_restful import Api, Resource, reqparse
 import json, urllib, requests
+import random
 
 app = Flask(__name__)
 api = Api(app)
@@ -110,10 +111,8 @@ def launch(launchID):
     json_data = json.loads(jsonText)
     # json_data = res.json()
     for launch in json_data:
-        print("launchID", launchID, "launchid from json", launch['launchid'])
         if (launch['launchid']) == launchID:
-            print("MATCH FOUND")
-            return render_template('launch.html', launch=launch)
+            return render_template('launch.html', launch=launch, weather=str(random.randint(72,105)))
    
     # return render_template('launch.html', launch)
 
