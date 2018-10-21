@@ -20,58 +20,31 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ url_for('static', filename='soyuz.jpg') }}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{ name }}</h5>
-              <p class="card-text">{{date}}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{ location }}</li>
-              <li class="list-group-item">{{ company }} </li>
-              <li class="list-group-item">{{ mission }}</li>
-            </ul>
-            <div class="card-body">
-              <a href="launch" class="btn btn-primary">More details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ url_for('static', filename='asdf.jpg') }}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{name2}}</h5>
-              <p class="card-text">{{date2}}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{location2}}</li>
-              <li class="list-group-item">{{company2}} </li>
-              <li class="list-group-item">{{mission2}}</li>
-            </ul>
-            <div class="card-body">
-              <a href="launch2" class="btn btn-primary">More details</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="{{ url_for('static', filename='zhuque.PNG') }}" alt="Card image cap">
+        {% if launches %}
+        {% for launch in launches %}
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" src="{{ url_for('static', filename='soyuz.jpg') }}" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">{{name3}}</h5>
-                <p class="card-text">{{date3}}</p>
+                <h5 class="card-title">{{ launch['name'] }}</h5>
+                <p class="card-text">{{ launch['launchStart'] }}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{location3}}</li>
-                <li class="list-group-item">{{company3}} </li>
-                <li class="list-group-item">{{mission3}}</li>
+                <li class="list-group-item">{{ launch['location'] }}</li>
+                <li class="list-group-item">{{ launch['lspname'] }} </li>
+                <li class="list-group-item">{{ launch['mission'] }}</li>
               </ul>
               <div class="card-body">
-                <a href="launch3" class="btn btn-primary">More details</a>
+                <a href="launch/{{ launch['launchid'] }}" class="btn btn-primary">More details</a>
               </div>
             </div>
-        </div>
+          </div>
+        {% endfor %}
+        {% else %}
+          No results.
+        {% endif %}
 
+        </div>
       </div>
     </div>
   </div>
