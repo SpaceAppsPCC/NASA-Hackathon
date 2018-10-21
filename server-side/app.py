@@ -90,22 +90,27 @@ def home():
     name = json_data[0]['name']
     mission = json_data[0]['mission']
     company = json_data[0]['lspname']
+    location = json_data[0]['location']
+    
 
     ##card 2
     date2 = json_data[1]['launchStart']
     name2 = json_data[1]['name']
     mission2 = json_data[1]['mission']
     company2 = json_data[1]['lspname']
+    location2 = json_data[1]['location']
 
     ##card 3
     date3 = json_data[2]['launchStart']
     name3 = json_data[2]['name']
     mission3 = json_data[2]['mission']
     company3 = json_data[2]['lspname']
+    location3 = json_data[2]['location']
+    
 
-    return render_template('home.html', date=date, name=name, mission=mission, company=company
-                                        date2=date, name2=name, mission2=mission, company2=company
-                                        date3=date, name3=name, mission3=mission, company3=company)
+    return render_template('home.html', date=date, name=name, mission=mission, company=company, location=location,
+                                        date2=date2, name2=name2, mission2=mission2, company2=company2, location2=location2,
+                                        date3=date3, name3=name3, mission3=mission3, company3=company3, location3=location3)
 
 @app.route('/about')
 def about():
