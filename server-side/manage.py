@@ -2,6 +2,7 @@ import json
 import urllib.request
 import sqlite3
 from parseLaunchAPI import parseLaunch
+import parseLaunchAPI
 
 def readParseJSON(url):
     #this is only for test purposes
@@ -25,18 +26,45 @@ def insertIntoDB(parsedJSON, dbname):
     cursorObj = conn.cursor()
 
     #This only works for launch info
-    launches = parsedJSON['launches']
-
+    # launches = parsedJSON['launches']
+    newParsedJSON = parsedJSON[1]
+    dictKeys = list(newParsedJSON.keys())
     # Create table with id, missionname, windowstart, and windowend
-    
-    cursorObj.execute('''CREATE TABLE IF NOT EXISTS launchinfo (id INTEGER PRIMARY KEY,missionname text, windowstart text, windowend text)''')
+    columnNamesTypes = "%s text," * (len(dictKeys))
+    columnNamesTypes = columnNamesTypes.rstrip(",")
+    columnNamesTypes = columnNamesTypes % tuple(dictKeys)
+    columns = ", ".join(dictKeys)
+    createStr = '''CREATE TABLE IF NOT EXISTS ''' + dbname + ''' (''' + columnNamesTypes + ''')'''
+    print("createStr: " + createStr)
+    cursorObj.execute(createStr)
 
-    for i in range(len(launches)):
-        idnum = int(parsedJSON['launches'][i]['id'])
-        name = str(parsedJSON['launches'][i]['name'])
-        windowstart = str(parsedJSON['launches'][i]['windowstart'])
-        windowend = str(parsedJSON['launches'][i]['windowend'])
-        executableStr = "INSERT INTO launchinfo ('id', 'missionname', 'windowstart', 'windowend') VALUES (%d, '%s', '%s', '%s')" % (idnum, name, windowstart, windowend)
+
+    for i in range(1, len(parsedJSON) + 1):
+        valueStr = ""
+        first = True
+        for key in dictKeys:
+            print("key: " ,key) 
+            print("value: ", parsedJSON[i][key])
+            if first == True:
+                
+                myStr = str(parsedJSON[i][key])
+                myStr = myStr.replace('"', '')
+                myStr = myStr.replace("'", ' ')
+
+
+                valueStr = "\"" + myStr + "\""
+                first = False
+            else:
+                myStr = str(parsedJSON[i][key])
+                myStr = myStr.replace('"', '')
+                myStr = myStr.replace("'", ' ')
+
+                valueStr = valueStr + ", \"" + myStr + "\""
+
+
+        executableStr = "INSERT INTO " + dbname + " (" + columns + ") VALUES (" + valueStr + ")"
+        # print("executableStr: " + executableStr)
+ 
         cursorObj.execute(executableStr)
 
     # Save (commit) the changes
@@ -46,6 +74,9 @@ def insertIntoDB(parsedJSON, dbname):
     # Just be sure any changes have been committed or they will be lost.
     conn.close()
 
-url = "https://launchlibrary.net/1.4/launch/next/5"
-parsedJSON = readParseJSON(url)
-insertIntoDB(parsedJSON, "launchInfo.db")
+
+# URL = "https://launchlibrary.net/1.4/launch/next/5"
+# parsedJSON = readParseJSON(URL)
+parsedJSON = parseLaunch()
+
+insertIntoDB(parsedJSON, "launchInfo")
