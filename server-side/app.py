@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_restful import Api, Resource, reqparse
-import json, urllib, requests
-
+import json
+import urllib.request as urllib2
 app = Flask(__name__)
 api = Api(app)
 
@@ -81,12 +81,16 @@ class DB(Resource):
 @app.route('/home')
 @app.route('/index')
 def home():
-    # apiurl = "https://launchlibrary.net/1.3/launch"
-    # res = requests.get(apiurl)
-    jsonFile = open('app.json')
-    jsonText = jsonFile.read()
-    json_data = json.loads(jsonText)
-    # json_data = res.json()
+    apiurl = "https://launchlibrary.net/1.4/launch"
+    header = {
+        'Content-Type': 'text/html',
+    }
+    res = requests.get(apiurl, headers = header)
+    # jsonFile = open('app.json')
+    # jsonText = jsonFile.read()
+    # json_data = json.loads(jsonText)
+    json_data = res.json()
+    print(json_data)
     return render_template('home.html', launches=json_data)
 
 @app.route('/about')
