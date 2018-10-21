@@ -4,7 +4,7 @@ import sqlite3
 from parseLaunchAPI import parseLaunch
 import parseLaunchAPI
 import simplejson
-
+from pollutionParserAPI import returnPollution
 def readParseJSON(url):
     #this is only for test purposes
     #gets a URL and parse the JSON
@@ -40,7 +40,7 @@ def insertIntoDB(parsedJSON, dbname):
     cursorObj.execute(createStr)
 
 
-    for i in range(1, len(parsedJSON) + 1): #len(parsedJSON) + 1
+    for i in range(1, len(parsedJSON)): #len(parsedJSON) + 1
         valueStr = ""
         first = True
         for key in dictKeys:
@@ -95,16 +95,18 @@ def getFromDB(dbname):
     # print("\n\nEND\n\n")
     # print(jsonOutput[0]['net'])
     newJSON = simplejson.dumps(jsonOutput)
-    print("\n\nEND\n\n")
-    print(newJSON)
+    # print("\n\nEND\n\n")
+    # print(newJSON)
     # for row in obj:
     #     print(row)
-    return obj
+    return newJSON
 # URL = "https://launchlibrary.net/1.4/launch/next/5"
 # parsedJSON = readParseJSON(URL)
-parsedJSON = parseLaunch()
+# parsedLaunchJSON = parseLaunch()
+# parsedPollutionJSON = returnPollution()
+# insertIntoDB(parsedLaunchJSON, "launchInfo")
+# insertIntoDB(parsedPollutionJSON, "pollutionInfo")
+# jsonOutput = getFromDB("launchInfo")
+# print("\n\n\n\n\n========\n\n")
+# print(jsonOutput)
 
-# insertIntoDB(parsedJSON, "launchInfo")
-jsonOutput = getFromDB("launchInfo")
-print("\n\n\n\n\n========\n\n")
-print(jsonOutput)
