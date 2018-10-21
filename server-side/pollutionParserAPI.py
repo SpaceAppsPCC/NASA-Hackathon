@@ -6,7 +6,8 @@ def openURL(url):
     Opens the argument url using urllib.request.urlopen
     Returns a dictionary created from the JSON data from the Launch Library Reading API
     :param url: string that contains the current url need to be read
-    :return: a dictionary parsed from the JSON data from the Launch Library Reading API        """
+    :return: a dictionary parsed from the JSON data from the Launch Library Reading API
+    """
 
     #check if you can open the URL.  passes back errors if URL does not open properly
     try:            jsonFile = urllib.request.urlopen(url)
@@ -54,6 +55,7 @@ def locationID():
 
         # Count keeps track of the total number of launches in the current JSON
         count = parsed_json['count']
+        # print("count: " + str(count))
 
         for i in range(count):
             # currentCount keeps track of the current launch given from our API
@@ -61,13 +63,17 @@ def locationID():
 
             # creates a dictionary for the current count
             infoJson[currentCount] = {}
+            if(parsed_json['launches'][i]['location']['pads'] != []):
+                infoJson[currentCount]['status'] = "AVAILABLE"
+                infoJson[currentCount]['latitude'] = parsed_json['launches'][i]['location']['pads'][0]['latitude']
+                infoJson[currentCount]['longitude'] = parsed_json['launches'][i]['location']['pads'][0]['longitude']
+            else:
+                # print("Error i: " + str(i))
+                infoJson[currentCount]['status'] = "NOT_AVAILABLE"
+                # print(parsed_json['launches'][i])
 
-            # print(parsed_json['launches'][i]['location']['pads'][0]['latitude'])
-            infoJson[currentCount]['latitude'] = parsed_json['launches'][i]['location']['pads'][0]['latitude']
-            # print(parsed_json['launches'][i]['location']['pads'][0]['longitude'])
-            infoJson[currentCount]['longitude'] = parsed_json['launches'][i]['location']['pads'][0]['longitude']
         offset += 10
-        launchURL = "https://launchlibrary.net/1.4/launch/2018-10-20?offset=%d"%offset
+        launchURL = "https://launchlibrary.net/1.4/launch/2018-10-20?offset=%d" % offset
 
     return infoJson
 
@@ -86,27 +92,36 @@ def aqiConvert(aqi):
         return "Hazardous"
 
 
-#Token key: c6ad742f8c8c04aabde6629b4346d77913923ce2
+#Token key: 6c894193647dce8de89b9323650390f2a585e22e
 def pollutionParser(dict):
     infoJson = {}
     for i in range(1,len(dict) + 1):
-        infoJson[i] = i
-        pollutionURL = "https://api.waqi.info/feed/"
-        pollutionURL += "geo:" + str(dict[i]['latitude']) + ";" + str(dict[i]['longitude']) + "/?token=" + "c6ad742f8c8c04aabde6629b4346d77913923ce2"
+        # print("i begin:" + str(i))
+        if(dict[i]['status'] != "NOT_AVAILABLE"):
+            # infoJson[i] = i
+            tokenKey = "cc69b5ca235fde1325f578d5758741dd64e12b0b"
+            pollutionURL = "https://api.waqi.info/feed/"
+            pollutionURL += "geo:" + str(dict[i]['latitude']) + ";" + str(dict[i]['longitude']) + "/?token=" + tokenKey
 
-        parsed_json = openURL(pollutionURL)
+            # print(":" + pollutionURL)
+            parsed_json = openURL(pollutionURL)
 
-        infoJson[i] = {}
+            infoJson[i] = {}
 
-        infoJson[i]['airrate'] = str(parsed_json['data']['aqi'])
-        infoJson[i]['airquality'] = aqiConvert(parsed_json['data']['aqi'])
-        infoJson[i]['dominentpol'] = parsed_json['data']['dominentpol']
-        infoJson[i]['timemeasure'] = parsed_json['data']['time']['s']
-        infoJson[i]['timezone'] = parsed_json['data']['time']['tz']
-        infoJson[i]['station'] = parsed_json['data']['city']['name']
-        infoJson[i]['stationID'] = parsed_json['data']['idx']
-        infoJson[i]['latitude'] = str(parsed_json['data']['city']['geo'][0])
-        infoJson[i]['longitude'] = str(parsed_json['data']['city']['geo'][1])
+            infoJson[i]['status'] = "AVAILABLE"
+            infoJson[i]['airrate'] = str(parsed_json['data']['aqi'])
+            infoJson[i]['airquality'] = aqiConvert(parsed_json['data']['aqi'])
+            infoJson[i]['dominentpol'] = parsed_json['data']['dominentpol']
+            infoJson[i]['timemeasure'] = parsed_json['data']['time']['s']
+            infoJson[i]['timezone'] = parsed_json['data']['time']['tz']
+            infoJson[i]['station'] = parsed_json['data']['city']['name']
+            infoJson[i]['stationID'] = parsed_json['data']['idx']
+            infoJson[i]['latitude'] = str(parsed_json['data']['city']['geo'][0])
+            infoJson[i]['longitude'] = str(parsed_json['data']['city']['geo'][1])
+        else:
+            infoJson[i] = {}
+            infoJson[i]['status'] = "NOT_AVAILABLE"
+
 
         print("i: " + str(i))
         print(infoJson[i])
@@ -116,9 +131,12 @@ def pollutionParser(dict):
 
 
 
-# dict = {1: {'latitude': 68.478, 'longtitude': 28.30123}, 2: {'latitude': 150, 'longtitude': 300}}
-dict = locationID();
+# dict = {1:{'latitude': 68.478, 'longtitude': 28.30123},2:{'latitude': 150, 'longtitude': 300}}
+
+dict = locationID()
+# dict = {1: {'latitude': 5.239, 'longitude': -52.768}}
 info = pollutionParser(dict)
+print(info)
 
 
 
