@@ -78,23 +78,27 @@ class DB(Resource):
 
 @app.route('/')
 @app.route('/home')
-# @app.route('/index')
+@app.route('/index')
 def home():
-    return render_template('home.html')
+    date = 'October 20, 2018 01:45:28 UTC'
+    name = 'Ariane 5 ECA | BepiColombo'
+
+    return render_template('home.html', date=date
+                                      , name=name)
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-# @app.route('/get', methods=['GET'])
-# def getDB():
-# #     # pollutionJson = getFromDB('pollutionInfo')
-# #     # return pollutionJson
-#     return 'Success GET', 999
+@app.route('/get', methods=['GET'])
+def getDB():
+    # pollutionJson = getFromDB('pollutionInfo')
+    # return pollutionJson
+    return 'Success GET', 999
 
 @app.route('/launch')
-def about():
+def launch():
     return render_template('launch.html')
 
-if __name__ == '__main__':
-	app.run(debug=True)
+# if __name__ == '__main__':
+# 	app.run(debug=True)
