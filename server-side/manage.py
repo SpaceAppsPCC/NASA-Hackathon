@@ -3,7 +3,8 @@ import urllib.request
 import sqlite3
 from parseLaunchAPI import parseLaunch
 import parseLaunchAPI
-
+import simplejson
+from pollutionParserAPI import returnPollution
 def readParseJSON(url):
     #this is only for test purposes
     #gets a URL and parse the JSON
@@ -35,11 +36,11 @@ def insertIntoDB(parsedJSON, dbname):
     columnNamesTypes = columnNamesTypes % tuple(dictKeys)
     columns = ", ".join(dictKeys)
     createStr = '''CREATE TABLE IF NOT EXISTS ''' + dbname + ''' (''' + columnNamesTypes + ''')'''
-    print("createStr: " + createStr)
+    # print("createStr: " + createStr)
     cursorObj.execute(createStr)
 
 
-    for i in range(1, len(parsedJSON) + 1):
+    for i in range(1, len(parsedJSON)): #len(parsedJSON) + 1
         valueStr = ""
         first = True
         for key in dictKeys:
@@ -63,7 +64,7 @@ def insertIntoDB(parsedJSON, dbname):
 
 
         executableStr = "INSERT INTO " + dbname + " (" + columns + ") VALUES (" + valueStr + ")"
-        print("executableStr: " + executableStr)
+        # print("executableStr: " + executableStr)
  
         cursorObj.execute(executableStr)
 
@@ -74,9 +75,38 @@ def insertIntoDB(parsedJSON, dbname):
     # Just be sure any changes have been committed or they will be lost.
     conn.close()
 
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
 
+def getFromDB(dbname):
+    conn = sqlite3.connect(dbname)
+    conn.row_factory = dict_factory
+    cursorObj = conn.cursor()
+
+    # selectStr = '''SELECT * FROM  ''' + dbname
+    selectStr = '''SELECT * FROM launchInfo DESC LIMIT 3'''
+    obj = cursorObj.execute(selectStr) 
+    jsonOutput = obj.fetchall()
+    # print("\n\nEND\n\n")
+    # print(jsonOutput)
+    # print("\n\nEND\n\n")
+    # print(jsonOutput[0]['net'])
+    newJSON = simplejson.dumps(jsonOutput)
+    # print("\n\nEND\n\n")
+    # print(newJSON)
+    # for row in obj:
+    #     print(row)
+    return newJSON
 # URL = "https://launchlibrary.net/1.4/launch/next/5"
 # parsedJSON = readParseJSON(URL)
-parsedJSON = parseLaunch()
+# parsedLaunchJSON = parseLaunch()
+# parsedPollutionJSON = returnPollution()
+# insertIntoDB(parsedLaunchJSON, "launchInfo")
+# insertIntoDB(parsedPollutionJSON, "pollutionInfo")
+# jsonOutput = getFromDB("launchInfo")
+# print("\n\n\n\n\n========\n\n")
+# print(jsonOutput)
 
-insertIntoDB(parsedJSON, "launchInfo")

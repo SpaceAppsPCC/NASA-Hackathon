@@ -1,227 +1,136 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <title>Rocket Data</title>
-
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">  <link rel="stylesheet" type="text/css" href="vendors/css/lTNeG3kXQpyOQgkyn7qV_2015-03-25_13-52-05__grid.css">
-        <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css"> 
-        <link rel="stylesheet" type="text/css" href="vendors/css/ionicons.min.css">
-        
-        <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./resources/css/index.css">
 
-        <script src="myscripts.js"></script>
-
-  <style>
-
-  .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active> a:focus, .navbar-inverse .navbar-nav>.active a:hover {
-    background-color: black;
-  }
-
-  .navbar-inverse {
-    background-color:black;
-  }
-      .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
-          background-color: #black;
-          color: #fff;
-          padding: 1% 0;
-          font-size:1.2em;
-          border:0;
-      }
-      .navbar-brand {
-          float: left;
-          min-height: 55px;
-          padding: 0 15px 5px;
-      }
-      
-      .navbar-inverse .navbar-nav .active a,.navbar-inverse .navbar-nav .active a:focus,
-      .navbar-inverse .navbar-nav .active a:hover {
-        color: #fff;
-        background-color:black ;
-      }
-      .navbar-inverse .navbar-nav li a {
-          color: #D5D5D5;
-      }
-      
-      .carousel-caption {
-          top: 50%;
-          transform: translateY(-50%);
-          text-transform: uppercase;
-      }
-      
-      .btn {
-          font-size: 18px;
-          color: #fff;
-          padding: 12px 22px;
-          background: black;
-          border: 2px solid #fff;
-      }
-      
-      .container |
-      #icon {
-          font-size: 200px;
-          margin: 1% auto;
-      }
-      .container {
-          margin: 4% auto;
-      }
-       #icon {
-              max-width: 200px;
-              margin: 1% auto;
-            }
-      footer {
-          width: 100%;
-          background-color: black;
-          padding: 3%;
-          color: #fff;
-      }
-      .fa {
-          padding: 20px;
-          font-size: 30px;
-          color: #fff;
-        }
-      .fa:hover {
-          color: #D5D5D5;
-          text-decoration: none;
-      }
-      
-      @media (max-width: 900px) {
-          .fa {
-            font-size: 25px;
-            padding: 10px;
-      }
-      }
-      @media (max-width: 600px) {
-          .carousel-caption {
-            display: none; 
-      }
-          #icon {
-             max-width: 150px; 
-          }
-          
-          h2 {
-              font-size: 1.7em;
-          }
-      }
-
-      
-  </style>
+  <!-- Libraries-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.amd.js"></script>
+  <title>Hello, world!</title>
 </head>
+
 <body>
-    <header>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                   <!-- <a class="navbar-brand" href="#"><img src="img/w3newbie.png"></a> -->
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Rocket Info</a></li>
-                            <li><a href="#">Location</a></li>
-                            <li><a href="#">Weather Data</a></li>
-                            <li><a href="#">Pollution Data</a></li>
-                        </ul>
-             </div>    
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html#">Rocket Launches Browser</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#About">About</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
 
-    
+  <div class="top-picture position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" 
+  style="background-image:url('resources/img/backgrounds/rocket-launch-bg.jpg');background-size: cover;
+  background-position: center 80%;">
+    <!-- <img src="resources/img/hero.jpg" class="img-fluid" alt="Responsive image"> -->
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 font-weight-normal text-light" style="text-shadow: 2px 2px 20px black;">Are the Rocket Launches Green? </h1>
+      <p class="lead font-weight-normal text-light" style="text-shadow: 2px 2px 20px black;">Learn about the enviornmental impacts of the rocket launches</p>
+      <!-- <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
 
-</header>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Here is what is cool about Bootstrap</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="img/bootstrap2.jpg" class="img-responsive">
-                </div>
-            </div>
-        </div>
+  <div class="album py-5 bg-light">
     <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col sm-6 col-xs-12">
-                    <h4>Built with Sass</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div> 
-                
-                <div class="col-lg-3 col-md-3 col sm-6 col-xs-12">
-                    <h4>and Less</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col sm-6 col-xs-12">
-                    <img src="img/less.png" class="img-responsive">
-                </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" src="resources/img/rocket.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Rocket Name</h5>
+              <p class="card-text">This is a really cool rocket</p>
             </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Launch date:</li>
+              <li class="list-group-item">Company: </li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-body">
+              <a href="launch-details.html" class="btn btn-primary">More details</a>
+            </div>
+          </div>
         </div>
-    
-         <div class="container">
-            <div class="row">
-                    <h4><a href="#hidden" data-toggle="collapse">Here is what is cool about Bootstrap</a></h4>
-                    <div id="hidden" class="collapse">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    
-                </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" src="resources/img/rocket.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Rocket Name</h5>
+              <p class="card-text">This is a really cool rocket</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Launch date:</li>
+              <li class="list-group-item">Company: </li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-body">
+              <a href="launch-details.html" class="btn btn-primary">More details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" src="resources/img/rocket.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Rocket Name</h5>
+                <p class="card-text">This is a really cool rocket</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Launch date:</li>
+                <li class="list-group-item">Company: </li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+              <div class="card-body">
+                <a href="launch-details.html" class="btn btn-primary">More details</a>
+              </div>
             </div>
         </div>
 
-        <div class="row">
-                <div class="col-lg-3 col-md-3 col sm-6 col-xs-12">
-                    <h4>Built with Sass</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div> 
-                
-                <div class="col-lg-3 col-md-3 col sm-6 col-xs-12">
-                    <h4>and Less</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col sm-6 col-xs-12">
-                    <img src="img/less.png" class="img-responsive">
-                </div>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-        
-        <footer class="container-fluid text-center">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h3>Contact Us</h3>
-                        <br>
-                        <h4>Our address and contact info here.</h4>
-                    </div>    
-                    <div class="col-sm-4">
-                        <h3>Connect</h3>
-                            <a href="#" class="fa fa-facebook"></a>
-                            <a href="#" class="fa fa-twitter"></a>
-                            <a href="#" class="fa fa-google"></a>
-                            <a href="#" class="fa fa-linkedin"></a>
-                            <a href="#" class="fa fa-youtube"></a>
-                    </div>
-                   
-                </div>
-    
-    
-    </footer>
+  <footer class="text-muted" id="About">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Rocket Salad©2018</p>
+      <p>We are the best. <a href="../../">Team page</a> | <a href="../../getting-started/">More about us</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
