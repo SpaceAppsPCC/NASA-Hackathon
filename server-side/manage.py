@@ -1,10 +1,10 @@
 import json
 import urllib.request
 import sqlite3
-from parseLaunchAPI import parseLaunch
-import parseLaunchAPI
+# from parseLaunchAPI import parseLaunch
+# import parseLaunchAPI
 import simplejson
-from pollutionParserAPI import returnPollution
+# from pollutionParserAPI import returnPollution
 def readParseJSON(url):
     #this is only for test purposes
     #gets a URL and parse the JSON
@@ -16,64 +16,64 @@ def readParseJSON(url):
 
     return parsed_json
 
-def insertIntoDB(parsedJSON, dbname):
-    #this is only for test purposes
-    #gets a JSON, database name, and list of fields 
-    #for now field names are hard coded
-    #add items to the db
-    #return void
+# def insertIntoDB(parsedJSON, dbname):
+#     #this is only for test purposes
+#     #gets a JSON, database name, and list of fields 
+#     #for now field names are hard coded
+#     #add items to the db
+#     #return void
 
-    conn = sqlite3.connect(dbname)
-    cursorObj = conn.cursor()
+#     conn = sqlite3.connect(dbname)
+#     cursorObj = conn.cursor()
 
-    #This only works for launch info
-    # launches = parsedJSON['launches']
-    newParsedJSON = parsedJSON[1]
-    dictKeys = list(newParsedJSON.keys())
-    # Create table with id, missionname, windowstart, and windowend
-    columnNamesTypes = "%s text," * (len(dictKeys))
-    columnNamesTypes = columnNamesTypes.rstrip(",")
-    columnNamesTypes = columnNamesTypes % tuple(dictKeys)
-    columns = ", ".join(dictKeys)
-    createStr = '''CREATE TABLE IF NOT EXISTS ''' + dbname + ''' (''' + columnNamesTypes + ''')'''
-    # print("createStr: " + createStr)
-    cursorObj.execute(createStr)
+#     #This only works for launch info
+#     # launches = parsedJSON['launches']
+#     newParsedJSON = parsedJSON[1]
+#     dictKeys = list(newParsedJSON.keys())
+#     # Create table with id, missionname, windowstart, and windowend
+#     columnNamesTypes = "%s text," * (len(dictKeys))
+#     columnNamesTypes = columnNamesTypes.rstrip(",")
+#     columnNamesTypes = columnNamesTypes % tuple(dictKeys)
+#     columns = ", ".join(dictKeys)
+#     createStr = '''CREATE TABLE IF NOT EXISTS ''' + dbname + ''' (''' + columnNamesTypes + ''')'''
+#     # print("createStr: " + createStr)
+#     cursorObj.execute(createStr)
 
 
-    for i in range(1, len(parsedJSON)): #len(parsedJSON) + 1
-        valueStr = ""
-        first = True
-        for key in dictKeys:
-            # print("key: " ,key) 
-            # print("value: ", parsedJSON[i][key])
-            if first == True:
+#     for i in range(1, len(parsedJSON)): #len(parsedJSON) + 1
+#         valueStr = ""
+#         first = True
+#         for key in dictKeys:
+#             # print("key: " ,key) 
+#             # print("value: ", parsedJSON[i][key])
+#             if first == True:
                 
-                myStr = str(parsedJSON[i][key])
-                myStr = myStr.replace('"', '')
-                myStr = myStr.replace("'", ' ')
+#                 myStr = str(parsedJSON[i][key])
+#                 myStr = myStr.replace('"', '')
+#                 myStr = myStr.replace("'", ' ')
 
 
-                valueStr = "\"" + myStr + "\""
-                first = False
-            else:
-                myStr = str(parsedJSON[i][key])
-                myStr = myStr.replace('"', '')
-                myStr = myStr.replace("'", ' ')
+#                 valueStr = "\"" + myStr + "\""
+#                 first = False
+#             else:
+#                 myStr = str(parsedJSON[i][key])
+#                 myStr = myStr.replace('"', '')
+#                 myStr = myStr.replace("'", ' ')
 
-                valueStr = valueStr + ", \"" + myStr + "\""
+#                 valueStr = valueStr + ", \"" + myStr + "\""
 
 
-        executableStr = "INSERT INTO " + dbname + " (" + columns + ") VALUES (" + valueStr + ")"
-        # print("executableStr: " + executableStr)
+#         executableStr = "INSERT INTO " + dbname + " (" + columns + ") VALUES (" + valueStr + ")"
+#         # print("executableStr: " + executableStr)
  
-        cursorObj.execute(executableStr)
+#         cursorObj.execute(executableStr)
 
-    # Save (commit) the changes
-    conn.commit()
+#     # Save (commit) the changes
+#     conn.commit()
 
-    # We can also close the connection if we are done with it.
-    # Just be sure any changes have been committed or they will be lost.
-    conn.close()
+#     # We can also close the connection if we are done with it.
+#     # Just be sure any changes have been committed or they will be lost.
+#     conn.close()
 
 def dict_factory(cursor, row):
     d = {}

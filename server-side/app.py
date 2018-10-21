@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api, Resource, reqparse
 
 app = Flask(__name__)
@@ -61,7 +61,7 @@ class DB(Resource):
         #         user["occupation"] = args["occupation"]
         #         return user, 200
 
-        # user = {
+        # user = 
         #     "name": name,
         #     "age": args["age"],
         #     "occupation": args["occupation"]
@@ -76,8 +76,25 @@ class DB(Resource):
         # return "{} is deleted".format(name), 200
         return "this is a test delete request", 200
 
-api.add_resource(User, "/DB/<string:name>")
-app.run(debug=True)
+@app.route('/')
+@app.route('/home')
+# @app.route('/index')
+def home():
+    return render_template('home.html')
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+# @app.route('/get', methods=['GET'])
+# def getDB():
+# #     # pollutionJson = getFromDB('pollutionInfo')
+# #     # return pollutionJson
+#     return 'Success GET', 999
+
+@app.route('/launch')
+def about():
+    return render_template('launch.html')
+
+if __name__ == '__main__':
+	app.run(debug=True)
