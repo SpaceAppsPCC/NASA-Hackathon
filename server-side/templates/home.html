@@ -28,9 +28,9 @@
               <p class="card-text">This is a really cool rocket</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Launch date: {{ date }}</li>
-              <li class="list-group-item">Company: {{ company }} </li>
-              <li class="list-group-item">{{ Mission }}</li>
+              <li class="list-group-item">{{ date }}</li>
+              <li class="list-group-item">{{ company }} </li>
+              <li class="list-group-item">{{ mission }}</li>
             </ul>
             <div class="card-body">
               <a href="launch" class="btn btn-primary">More details</a>
@@ -41,13 +41,13 @@
           <div class="card mb-4 shadow-sm">
             <img class="card-img-top" src="{{ url_for('static', filename='rocket.jpg') }}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Rocket Name</h5>
+              <h5 class="card-title">{{name2}}</h5>
               <p class="card-text">This is a really cool rocket</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Launch date:</li>
-              <li class="list-group-item">Company: </li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li class="list-group-item">{{date2}}</li>
+              <li class="list-group-item">{{company2}} </li>
+              <li class="list-group-item">{{mission2}}</li>
             </ul>
             <div class="card-body">
               <a href="launch" class="btn btn-primary">More details</a>
@@ -58,13 +58,13 @@
           <div class="card mb-4 shadow-sm">
               <img class="card-img-top" src="{{ url_for('static', filename='rocket.jpg') }}" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Rocket Name</h5>
+                <h5 class="card-title">{{name3}}</h5>
                 <p class="card-text">This is a really cool rocket</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Launch date:</li>
-                <li class="list-group-item">Company: </li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">{{date3}}</li>
+                <li class="list-group-item">{{company3}} </li>
+                <li class="list-group-item">{{mission3}}</li>
               </ul>
               <div class="card-body">
                 <a href="launch-details.html" class="btn btn-primary">More details</a>

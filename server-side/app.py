@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_restful import Api, Resource, reqparse
+import json
 
 app = Flask(__name__)
 api = Api(app)
@@ -80,11 +81,31 @@ class DB(Resource):
 @app.route('/home')
 @app.route('/index')
 def home():
-    date = 'October 20, 2018 01:45:28 UTC'
-    name = 'Ariane 5 ECA | BepiColombo'
+    jsonFile = open('app.json')
+    jsonText = jsonFile.read()
+    json_data = json.loads(jsonText)
 
-    return render_template('home.html', date=date
-                                      , name=name)
+    ##card 1
+    date = json_data[0]['launchStart']
+    name = json_data[0]['name']
+    mission = json_data[0]['mission']
+    company = json_data[0]['lspname']
+
+    ##card 2
+    date2 = json_data[1]['launchStart']
+    name2 = json_data[1]['name']
+    mission2 = json_data[1]['mission']
+    company2 = json_data[1]['lspname']
+
+    ##card 3
+    date3 = json_data[2]['launchStart']
+    name3 = json_data[2]['name']
+    mission3 = json_data[2]['mission']
+    company3 = json_data[2]['lspname']
+
+    return render_template('home.html', date=date, name=name, mission=mission, company=company
+                                        date2=date, name2=name, mission2=mission, company2=company
+                                        date3=date, name3=name, mission3=mission, company3=company)
 
 @app.route('/about')
 def about():
