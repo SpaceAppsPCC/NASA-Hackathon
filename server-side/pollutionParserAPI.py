@@ -121,6 +121,15 @@ def pollutionParser(dict):
         else:
             infoJson[i] = {}
             infoJson[i]['status'] = "NOT_AVAILABLE"
+            infoJson[i]['airrate'] = "null"
+            infoJson[i]['airquality'] = "null"
+            infoJson[i]['dominentpol'] = "null"
+            infoJson[i]['timemeasure'] = "null"
+            infoJson[i]['timezone'] = "null"
+            infoJson[i]['station'] = "null"
+            infoJson[i]['stationID'] = "null"
+            infoJson[i]['latitude'] = "null"
+            infoJson[i]['longitude'] = "null"
 
 
         print("i: " + str(i))
