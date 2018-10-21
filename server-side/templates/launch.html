@@ -40,11 +40,12 @@
     </div>
   </nav>
 
+
 <div class="container mt-5 p-5 bg-light border" >
   <div class="row">
     <div class="col-lg mb-3">
       <div class="card">
-        <img class="card-img-top" src="{{ url_for('static', filename='rocket-launch-bg.jpg') }}" alt="Card image cap">
+        <img class="card-img-top" src="../static/{{ launch['launchid'] }}.jpg" alt="Card image cap">
       </div>
     </div>
     <div class="col-lg mb-3">
@@ -52,13 +53,22 @@
         <div class="card-body">
           <!-- <h3 class="card-title">Info</h3> -->
           <!-- <p class="card-text">Some info on this specific launch. </p> -->
-          <iframe width="500" height="300"
-          src="https://www.youtube.com/watch?v=wwMDvPCGeE0">
-          </iframe> 
-        </div>
+          <iframe width="600" height="315" src="https://www.youtube.com/embed/Y6w8f6VLXnA?controls=0" frameborder="0" 
+          allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>      
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Name</h3>
+          <p class="card-text">{{ launch['name'] }} </p>
+        </div>
+      </div>  
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-lg mb-3">
       <div class="card bg-light">
@@ -75,8 +85,8 @@
         </div>
       </div>  
     </div>
-
   </div>
+
   <div class="row">
     <div class="col-lg mb-3">
       <div class="card bg-light">
@@ -98,12 +108,53 @@
     <div class="col-lg mb-3">
       <div class="card bg-light">
         <div class="card-body">
-          <h3 class="card-title">Info</h3>
-          <p class="card-text">Some info on this specific launch. </p>
+          <h3 class="card-title">Launch time</h3>
+          <p class="card-text">{{ launch['net'] }} </p>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Rocket name</h3>
+          <p class="card-text">{{ launch['rocketname'] }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Mission</h3>
+          <p class="card-text">{{ launch['mission'] }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Location</h3>
+          <p class="card-text">{{ launch['location'] }} </p>
+        </div>
+      </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-lg mb-3">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h3 class="card-title">LSP</h3>
+              <p class="card-text">{{ launch['lspname'] }} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
 </div>
  
 
@@ -129,3 +180,4 @@
 </body>
 
 </html>
+

@@ -87,11 +87,13 @@ def home():
     jsonText = jsonFile.read()
     json_data = json.loads(jsonText)
     # json_data = res.json()
+
     return render_template('home.html', launches=json_data)
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+# @app.route('/about')
+# def about():
+#     return render_template('about.html')
+
 
 @app.route('/get', methods=['GET'])
 def getDB():
@@ -99,9 +101,22 @@ def getDB():
     # return pollutionJson
     return 'Success GET', 999
 
-@app.route('/launch/<launch_num>')
-def launch():
-    return render_template('launch.html', launch_num=launch_num)
+@app.route('/launch/<launchID>')
+def launch(launchID):
+    # img =
+
+    jsonFile = open('app.json')
+    jsonText = jsonFile.read()
+    json_data = json.loads(jsonText)
+    # json_data = res.json()
+    for launch in json_data:
+        print("launchID", launchID, "launchid from json", launch['launchid'])
+        if (launch['launchid']) == launchID:
+            print("MATCH FOUND")
+            return render_template('launch.html', launch=launch)
+   
+    # return render_template('launch.html', launch)
+
 
 
 # @app.route('/launch') 
