@@ -40,37 +40,69 @@
     </div>
   </nav>
 
-  <div class="top-picture position-relative overflow-hidden text-center bg-light">
-    <!-- <img src="resources/img/hero.jpg" class="img-fluid" alt="Responsive image"> -->
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 font-weight-normal">
-        A Cool Rocket
-      </h1>
-      <p class="lead font-weight-normal">
-        Info about this cool rocket
-      </p>
-      <!-- <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-  </div>
-
-  <div class="jumbotron p-3 p-md-5 rounded bg-light" style="margin: auto;">
-    <div class="row mb-2">
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="resources/img/rocket.webp" alt="Card image cap" width="100" height="100">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+<div class="container mt-5 p-5 bg-light border" >
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card">
+        <img class="card-img-top" src="resources/img/rocket.webp" alt="Card image cap">
       </div>
-      
+    </div>
+    <div class="col-lg mb-3">
+      <div class="card bg-info h-100">
+        <div class="card-body">
+          <h3 class="card-title">Info</h3>
+          <p class="card-text">Some info on this specific launch. </p>
+        </div>
+      </div>      
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Weather</h3>
+          <h1 class="card-text font-weight-light">
+            <span id="temperature">
+              95 °F
+            </span>
+            <span id="weather-description">
+              Sunny
+            </span>
+          </h1>
+        </div>
+      </div>  
+    </div>
 
+  </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Pollution</h3>
+          <p class="card-text">
+            <span class="font-weight-bold">Air quality rating: </span>
+            <span id="air-quality">Good</span>
+          </p>
+          <p class="card-text">
+              <span class="font-weight-bold">Major Pollutants: </span>
+              <span id="air-quality">CO2, PM2.5</span>
+          </p>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg mb-3">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h3 class="card-title">Info</h3>
+          <p class="card-text">Some info on this specific launch. </p>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+ 
 
 
     <footer class="text-muted" id="About">
