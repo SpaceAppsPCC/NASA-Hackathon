@@ -126,5 +126,13 @@ def getDB():
 def launch():
     return render_template('launch.html')
 
+@app.route('/launch2')
+def launch_2():
+    return render_template('launch1.html')
+
+@app.route('/launch3')
+def launch_3():
+    return render_template('launch2.html')
+
 # if __name__ == '__main__':
 # 	app.run(debug=True)
