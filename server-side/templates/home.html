@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="top-picture position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" 
+<div class="top-picture position-relative overflow-hidden p-3 p-md-5 text-center bg-light" 
   style="background-image:url({{ url_for('static', filename='rocket-launch-bg.jpg') }});background-size: cover;
   background-position: center 100%;">
     <!-- <img src="resources/img/hero.jpg" class="img-fluid" alt="Responsive image"> -->
@@ -30,9 +30,9 @@
                 <p class="card-text">{{ launch['launchStart'] }}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{ launch['location'] }}</li>
-                <li class="list-group-item">{{ launch['lspname'] }} </li>
-                <li class="list-group-item">{{ launch['mission'] }}</li>
+                <li class="list-group-item"><b>Location:</b> {{ launch['location'] }}</li>
+                <li class="list-group-item"><b>LSP:</b> {{ launch['lspname'] }} </li>
+                <li class="list-group-item"><b>Mission:</b> {{ launch['mission'] }}</li>
               </ul>
               <div class="card-body">
                 <a href="launch/{{ launch['launchid'] }}" class="btn btn-primary">More details</a>
