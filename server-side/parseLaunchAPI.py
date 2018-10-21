@@ -102,9 +102,15 @@ def parseLaunch():
             # print(parsed_json['launches'][i]['windowstart'])
             infoJson[currentCount]['launchEnd'] = parsed_json['launches'][i]['windowend']
             # print(parsed_json['launches'][i]['location']['pads'][0]['name'])
-            infoJson[currentCount]['location'] = parsed_json['launches'][i]['location']['pads'][0]['name']
 
-            infoJson[currentCount]['locationid'] = parsed_json['launches'][i]['location']['pads'][0]['id']
+            if(parsed_json['launches'][i]['location']['pads'] != []):
+                infoJson[currentCount]['location'] = parsed_json['launches'][i]['location']['pads'][0]['name']
+                infoJson[currentCount]['locationid'] = parsed_json['launches'][i]['location']['pads'][0]['id']
+            else:
+                infoJson[currentCount]['location'] = "No location listed"
+                infoJson[currentCount]['locationid'] = "No location ID listed"
+
+
 
             infoJson[currentCount]['rocketid'] = parsed_json['launches'][i]['rocket']['id']
 
@@ -121,10 +127,15 @@ def parseLaunch():
             except KeyError:
                 infoJson[currentCount]['lspname'] = 'No lsp listed'
 
-            # print(parsed_json['launches'][i]['location']['pads'][0]['latitude'])
-            infoJson[currentCount]['latitude'] = parsed_json['launches'][i]['location']['pads'][0]['latitude']
-            # print(parsed_json['launches'][i]['location']['pads'][0]['longitude'])
-            infoJson[currentCount]['longitude'] = parsed_json['launches'][i]['location']['pads'][0]['longitude']
+            if (parsed_json['launches'][i]['location']['pads'] != []):
+                # print(parsed_json['launches'][i]['location']['pads'][0]['latitude'])
+                infoJson[currentCount]['latitude'] = parsed_json['launches'][i]['location']['pads'][0]['latitude']
+                # print(parsed_json['launches'][i]['location']['pads'][0]['longitude'])
+                infoJson[currentCount]['longitude'] = parsed_json['launches'][i]['location']['pads'][0]['longitude']
+            else:
+                # print("Current count: " + str(currentCount))
+                infoJson[currentCount]['latitude'] = "No latitude"
+                infoJson[currentCount]['longitude'] = "No longitude"
 
             try:
                 print(parsed_json['launches'][i]['missions'][0]['description'])
@@ -139,4 +150,6 @@ def parseLaunch():
 
 
 
-parseLaunch()
+info = parseLaunch()
+# print("Info: ")
+# print(info)
