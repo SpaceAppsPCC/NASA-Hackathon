@@ -1,6 +1,8 @@
 import json
 import urllib.request
 
+
+
 def openURL(url):
     """
     Opens the argument url using urllib.request.urlopen
@@ -69,6 +71,29 @@ def parseLaunch():
             # The information we care about currently is the launch name, launch start time, launch location name, coordinates
             # and mission description if applicable
 
+            # launchids
+            infoJson[currentCount]['launchid'] = parsed_json['launches'][i]['id']
+
+            # planned launch time
+            infoJson[currentCount]['net'] = parsed_json['launches'][i]['net']
+
+            # Status for the launch as an integer (1 Green, 2 Red, 3 Success, 4 Failed)
+            infoJson[currentCount]['status'] = parsed_json['launches'][i]['status']
+
+            # Video URLS (can be empty, single, or multiple)
+            # We check how many video URLs are provided and put the ones that exist into a list
+            totalVidURLs = len(parsed_json['launches'][i]['vidURLs'])
+
+            if totalVidURLs == 0:
+                infoJson[currentCount]['videoURLs'] = 'No video URLs'
+            else:
+                infoJson[currentCount]['videoURLs'] = {}
+                for v in range(totalVidURLs):
+                    infoJson[currentCount]['videoURLs'][v] = parsed_json['launches'][i]['vidURLs'][v]
+
+
+
+
             infoJson[currentCount]['name'] = parsed_json['launches'][i]['name']
             # print(parsed_json['launches'][i]['name'])
             infoJson[currentCount]['launchStart'] = parsed_json['launches'][i]['windowstart']
@@ -76,6 +101,24 @@ def parseLaunch():
             infoJson[currentCount]['launchEnd'] = parsed_json['launches'][i]['windowend']
             # print(parsed_json['launches'][i]['location']['pads'][0]['name'])
             infoJson[currentCount]['location'] = parsed_json['launches'][i]['location']['pads'][0]['name']
+
+            infoJson[currentCount]['locationid'] = parsed_json['launches'][i]['location']['pads'][0]['id']
+
+            infoJson[currentCount]['rocketid'] = parsed_json['launches'][i]['rocket']['id']
+
+            infoJson[currentCount]['rocketname'] = parsed_json['launches'][i]['rocket']['name']
+
+            # agencies for the rockets (not all rockets have associated agencies
+            try:
+                infoJson[currentCount]['agencies'] = parsed_json['launches'][i]['rocket']['agencies'][0]['name']
+            except IndexError:
+                infoJson[currentCount]['agencies'] = 'No listed agencies'
+
+            try:
+                infoJson[currentCount]['lspname'] = parsed_json['launches'][i]['lsp']['name']
+            except KeyError:
+                infoJson[currentCount]['lspname'] = 'No lsp listed'
+
             # print(parsed_json['launches'][i]['location']['pads'][0]['latitude'])
             infoJson[currentCount]['latitude'] = parsed_json['launches'][i]['location']['pads'][0]['latitude']
             # print(parsed_json['launches'][i]['location']['pads'][0]['longitude'])
