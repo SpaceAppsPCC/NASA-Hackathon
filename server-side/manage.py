@@ -43,8 +43,8 @@ def insertIntoDB(parsedJSON, dbname):
         valueStr = ""
         first = True
         for key in dictKeys:
-            print("key: " ,key) 
-            print("value: ", parsedJSON[i][key])
+            # print("key: " ,key) 
+            # print("value: ", parsedJSON[i][key])
             if first == True:
                 
                 myStr = str(parsedJSON[i][key])
@@ -63,7 +63,7 @@ def insertIntoDB(parsedJSON, dbname):
 
 
         executableStr = "INSERT INTO " + dbname + " (" + columns + ") VALUES (" + valueStr + ")"
-        # print("executableStr: " + executableStr)
+        print("executableStr: " + executableStr)
  
         cursorObj.execute(executableStr)
 
